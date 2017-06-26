@@ -1,0 +1,24 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jun 26 11:20:45 2017
+
+@author: tang
+"""
+
+import csv
+import sys
+filename = 'D:\ch02-data.csv'
+data= []
+try:
+    with open(filename,'r') as f:
+        reader = csv.reader(f)
+        header = next(reader)
+        data = [row for row in reader]#经典的读取所有表格数据
+except csv.Error as e:
+    print ('Error reading csv file at line %s:%s'%(reader.line_num,e))
+    sys.exit(-1)
+if header:
+    print (header)
+    print('===================')
+for datarow in data:
+    print (datarow)
